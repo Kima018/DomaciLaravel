@@ -2,7 +2,7 @@
 
 @section('addCitySection')
     <section class="mt-10">
-        <form class="relative shadow-md sm:rounded-lg" method="POST" action="">
+        <form class="relative shadow-md sm:rounded-lg" method="POST" action="{{route('city.add')}}">
             {{csrf_field()}}
             <table class=" w-full flex text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">

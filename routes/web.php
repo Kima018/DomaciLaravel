@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::middleware(['auth', AdminCheck::class])->prefix('admin')->group(function () {
-    Route::get("/city",[\App\Http\Controllers\CityController::class,'addCity'])->name('city.add');
+    Route::get("/city",[\App\Http\Controllers\CityController::class,'addCity']);
+    Route::post('/add-city',[\App\Http\Controllers\CityController::class,'saveCity'])->name('city.add');
 });
 
