@@ -22,5 +22,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', AdminCheck::class])->prefix('admin')->group(function () {
     Route::get("/city",[\App\Http\Controllers\CityController::class,'addCity']);
     Route::post('/add-city',[\App\Http\Controllers\CityController::class,'saveCity'])->name('city.add');
+    Route::get('/forecast',[\App\Http\Controllers\ForecastController::class,'addForecast']);
+    Route::post("/add-forecast",[\App\Http\Controllers\ForecastController::class,"saveForecast"])->name('forecast.add');
 });
 
