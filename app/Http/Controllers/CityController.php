@@ -32,4 +32,10 @@ class CityController extends Controller
         return redirect('/');
 
     }
+
+    public function delete(Request $request , City $city)
+    {
+        $city->delete();
+        return redirect('/');
+    }
 }

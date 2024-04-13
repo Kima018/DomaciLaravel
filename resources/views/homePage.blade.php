@@ -8,19 +8,14 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Product name
+                        City name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Description
+                        Current temperature
                     </th>
+
                     <th scope="col" class="px-6 py-3">
-                        Amount
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Price
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Image
+                        actions
                     </th>
                 </tr>
                 </thead>
@@ -31,20 +26,15 @@
                             {{$city->name}}
                         </th>
                         <td class="px-6 py-4 max-w-[500px]">
-                            {{$city->description}}
+                            {{$city->curr_temp}}
                         </td>
-                        <td class="px-6 py-4">
-                            {{$city->amount}}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{$city->price}}
-                        </td>
-                        <td class="px-6 py-4">
-                            coming soon...
-                        </td>
+
                         <td class="px-6 py-4">
                             <a href="{{route('city.single',['city' => $city->id ])}}"
                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+
+                            <a href="{{route('city.delete',['city' => $city->id ])}}"
+                               class="font-medium text-red-700 dark:text-blue-500 hover:underline">Delete</a>
                         </td>
                     </tr>
 

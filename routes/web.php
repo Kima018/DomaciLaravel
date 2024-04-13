@@ -25,5 +25,6 @@ Route::middleware(['auth', AdminCheck::class])->prefix('admin')->group(function 
     Route::get('/city/{city}',[\App\Http\Controllers\CityController::class,'editCity'])->name('city.single');
     Route::get('/forecast',[\App\Http\Controllers\ForecastController::class,'addForecast']);
     Route::post("/add-forecast",[\App\Http\Controllers\ForecastController::class,"saveForecast"])->name('forecast.add');
+    Route::get('/city/{city}/delete',[\App\Http\Controllers\CityController::class,'delete'])->name('city.delete');
 });
 
