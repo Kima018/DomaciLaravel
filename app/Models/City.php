@@ -10,6 +10,7 @@ class City extends Model
 {
     protected $table = 'cities';
     protected $fillable = [
-        "city"
+        "name",
+        "curr_temp",
     ];
 }

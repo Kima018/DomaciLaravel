@@ -54,6 +54,8 @@
   <div class="container mx-auto">
       @yield('addCitySection')
       @yield('addForecastSection')
+      @yield('editCity')
+
 
   </div>
 

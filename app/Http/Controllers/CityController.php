@@ -12,14 +12,21 @@ class CityController extends Controller
         return view('admin.addCity');
     }
 
+    public function editCity(City $city)
+    {
+        return view('admin.editCity', compact('city'));
+    }
+
     public function saveCity(Request $request)
     {
         $request->validate([
-            "city_name"=>"required|string",
+            "city_name" => "required|string",
+            "curr_temp" => "required",
         ]);
 
         City::create([
-            "city" => $request->get('city_name'),
+            "name" => $request->get('city_name'),
+            "curr_temp" => $request->get('curr_temp')
         ]);
 
         return redirect('/');
