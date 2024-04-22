@@ -13,16 +13,27 @@ class WeatherSeeder extends Seeder
      */
     public function run(): void
     {
-        $forecast = [
-            'Backa_Palanka'=>24,
-            'Sremska_Mitrovica'=>18,
-        ];
+        $cityName = $this->command->getOutput()->ask('Unesite ime grada:');
 
-        foreach ($forecast as $city => $currTemp){
-            City::create([
-               'name'=>$city,
-               'curr_temp'=>$currTemp,
-            ]);
+        if ($cityName === null) {
+            $this->command->getOutput()->error('Niste uneli ime grada');
         }
+
+        if (City::where('name',$cityName)->exists()){
+            $this->command->getOutput()->error('Grad je vec unet u tabelu');
+        }
+
+        $currTemp = $this->command->getOutput()->ask("Unesite trenutnu temperaturu za grad $cityName:");
+
+        if ($currTemp === null){
+            $this->command->getOutput()->error('Niste uneliu temperaturu');
+        }
+
+        City::create([
+           'name' => $cityName,
+            'curr_temp'=>$currTemp,
+        ]);
+        echo 'Uspesno ste uneli grad u tabelu';
+
     }
 }
