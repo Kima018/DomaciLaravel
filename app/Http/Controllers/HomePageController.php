@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
-use App\Models\Forecast;
-use Illuminate\Http\Request;
+use App\Models\DomaciWeather;
 
 class HomePageController extends Controller
 {
     public function index()
     {
-        $cities = City::all();
-        return view('homePage', compact('cities'));
+        $forecast = DomaciWeather::all();
+        return view('homePage', compact('forecast'));
     }
 }

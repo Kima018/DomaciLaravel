@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class DomaciWeather extends Model
@@ -12,4 +11,10 @@ class DomaciWeather extends Model
         'city_id',
         'curr_temp'
     ];
+
+
+    public function city()
+    {
+        return $this->hasOne(DomaciCities::class,'id','city_id');
+    }
 }
