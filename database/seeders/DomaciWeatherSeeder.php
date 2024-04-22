@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\DomaciCities;
 use App\Models\DomaciWeather;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DomaciWeatherSeeder extends Seeder

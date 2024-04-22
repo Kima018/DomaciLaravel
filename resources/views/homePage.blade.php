@@ -20,20 +20,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($cities as $city)
+                @foreach($forecast as $weather)
                     <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{$city->name}}
+                            {{$weather->city->name}}
                         </th>
                         <td class="px-6 py-4 max-w-[500px]">
-                            {{$city->curr_temp}}
+                            {{$weather->curr_temp}}
                         </td>
 
                         <td class="px-6 py-4">
-                            <a href="{{route('city.single',['city' => $city->id ])}}"
+                            <a href="{{route('city.single',['city' => $weather->id ])}}"
                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
 
-                            <a href="{{route('city.delete',['city' => $city->id ])}}"
+                            <a href="{{route('city.delete',['city' => $weather->id ])}}"
                                class="font-medium text-red-700 dark:text-blue-500 hover:underline">Delete</a>
                         </td>
                     </tr>

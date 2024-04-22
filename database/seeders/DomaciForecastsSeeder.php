@@ -4,9 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\DomaciCities;
 use App\Models\DomaciForecasts;
-use Carbon\Carbon;
 use Faker\Factory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DomaciForecastsSeeder extends Seeder
