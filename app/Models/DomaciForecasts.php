@@ -8,7 +8,7 @@ class DomaciForecasts extends Model
 {
     protected $table = 'domaci_forecasts';
     protected $fillable = [
-        'citi_id',
+        'city_id',
         'temperature',
         'date',
         'weather_type',

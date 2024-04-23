@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminForecastsController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ForecastController;
 use App\Http\Controllers\HomePageController;
@@ -29,5 +30,13 @@ Route::middleware(['auth', AdminCheck::class])->prefix('admin')->group(function 
     Route::post("/add-forecast", [ForecastController::class, "saveForecast"])->name('forecast.add');
     Route::get('/city/{city}/delete', [CityController::class, 'delete'])->name('city.delete');
 });
+
 Route::get('/forecast/{city:name}', [ForecastController::class, 'citiesForecast'])->name('forecast.cities');
 
+//Domaci 14
+
+Route::view('/admin/forecasts', 'admin.forecasts');
+Route::post('/admin/forecasts/add', [AdminForecastsController::class, 'addForecast'])
+    ->name('forecast.add');
+
+//_____________
