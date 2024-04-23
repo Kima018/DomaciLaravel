@@ -13,6 +13,7 @@ class DomaciCities extends Model
 
     public function forecasts()
     {
-        return $this->hasMany(DomaciForecasts::class,'city_id','id');
+        return $this->hasMany(DomaciForecasts::class,'city_id','id')
+            ->orderBy('date');
     }
 }
