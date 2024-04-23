@@ -12,9 +12,9 @@ class ForecastController extends Controller
 {
     public function citiesForecast(DomaciCities $city): View
     {
-        $prognoze = DomaciForecasts::where(['city_id'=>$city->id])->get();
+//        $prognoze = DomaciForecasts::where(['city_id'=>$city->id])->get();
 
-        return view('cities-forecast',compact('prognoze'));
+        return view('cities-forecast',compact('city'));
     }
 
     public function addForecast()

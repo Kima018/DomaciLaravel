@@ -10,4 +10,9 @@ class DomaciCities extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function forecasts()
+    {
+        return $this->hasMany(DomaciForecasts::class,'city_id','id');
+    }
 }
