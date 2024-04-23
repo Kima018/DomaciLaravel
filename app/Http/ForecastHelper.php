@@ -8,6 +8,7 @@ class ForecastHelper
         'rainy' => "fa-solid fa-cloud-rain",
         'snowy' => "fa-regular fa-snowflake",
         'sunny' => "fa-solid fa-sun",
+        'cloudy'=>"fa-solid fa-cloud"
     ];
 
     public static function getColorByTemperature($temperature)
@@ -21,5 +22,13 @@ class ForecastHelper
     public static function getIconByWeatherType($type)
     {
         return self::WEATHER_ICONS[$type];
+    }
+
+    public static function gerWeatherTypeByTemperature($temperature)
+    {
+        if ($temperature <= 1) return 'snowy';
+        if ($temperature <= 15) return 'cloudy';
+        if ($temperature <= 25) return "text-green-500";
+        return self::WEATHER_ICONS['sunny'];
     }
 }

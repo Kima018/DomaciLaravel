@@ -53,11 +53,11 @@
         <input type="date" name="date" class="border">
         <button type="submit">Save</button>
     </form>
-
+<div class="grid grid-cols-6">
     @foreach(DomaciCities::all() as $city)
         <div class="mb-5">
-            <h3>{{$city->name}}</h3>
-            <ul class="pl-10 list-disc">
+            <h3 class="text-xl">{{$city->name}}</h3>
+            <ul class="pl-5 list-disc">
                 @foreach($city->forecasts as $forecast)
                     <li>{{$forecast->date}} -
                         <i class="{{ForecastHelper::getIconByWeatherType($forecast->weather_type)}}"></i>
@@ -69,6 +69,10 @@
 
         </div>
     @endforeach
+
+
+
+</div>
 
 </section>
 </body>

@@ -15,5 +15,5 @@ class DomaciForecasts extends Model
         'probability',
     ];
 
-    const WEATHERS = ["rainy","sunny","snowy"];
+    const WEATHERS = ["rainy","sunny","snowy","cloudy"];
 }
