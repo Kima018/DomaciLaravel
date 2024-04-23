@@ -11,5 +11,9 @@ class DomaciForecasts extends Model
         'citi_id',
         'temperature',
         'date',
+        'weather_type',
+        'probability',
     ];
+
+    const WEATHERS = ["rainy","sunny","snowy"];
 }

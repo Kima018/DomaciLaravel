@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\DomaciCities;
 use App\Models\DomaciForecasts;
-use Faker\Factory;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class DomaciForecastsSeeder extends Seeder
@@ -14,25 +14,43 @@ class DomaciForecastsSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Factory::create();
         $cities = DomaciCities::all();
-        $this->command->getOutput()->progressStart();
-
         foreach ($cities as $city) {
 
             for ($i = 0; $i < 5; $i++) {
+                $weatherType = DomaciForecasts::WEATHERS[rand(0, 2)];
+                $probability = null;
+                if ($weatherType == "rainy" || $weatherType == "snowy") $probability = rand(1, 100);
                 DomaciForecasts::create([
                     'city_id' => $city->id,
-                    'temperature' => $faker->numberBetween(5, 28),
-                    'date' => $faker->dateTimeBetween('now', '+1 week')->format('Y-m-d'),
+                    'temperature' => rand(15, 30),
+                    'date' => Carbon::now()->addDays(rand(1, 30)),
+                    'weather_type' => $weatherType,
+                    'probability' => $probability,
                 ]);
-                $this->command->getOutput()->progressAdvance();
             }
 
         }
 
-        $this->command->getOutput()->progressFinish();
-
     }
 
 }
+
+//$faker = Factory::create();
+//$cities = DomaciCities::all();
+//$this->command->getOutput()->progressStart();
+//
+//foreach ($cities as $city) {
+//
+//    for ($i = 0; $i < 5; $i++) {
+//        DomaciForecasts::create([
+//            'city_id' => $city->id,
+//            'temperature' => $faker->numberBetween(5, 28),
+//            'date' => $faker->dateTimeBetween('now', '+1 week')->format('Y-m-d'),
+//        ]);
+//        $this->command->getOutput()->progressAdvance();
+//    }
+//
+//}
+//
+//$this->command->getOutput()->progressFinish();
