@@ -10,6 +10,6 @@ class HomePageController extends Controller
     public function index()
     {
         $forecast = DomaciWeather::all();
-        return view('homePage', compact('forecast'));
+        return view('admin.homePage', compact('forecast'));
     }
 }

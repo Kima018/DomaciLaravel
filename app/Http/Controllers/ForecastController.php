@@ -10,12 +10,7 @@ use Illuminate\View\View;
 
 class ForecastController extends Controller
 {
-    public function citiesForecast(DomaciCities $city): View
-    {
-//        $prognoze = DomaciForecasts::where(['city_id'=>$city->id])->get();
 
-        return view('cities-forecast',compact('city'));
-    }
 
     public function addForecast()
     {
@@ -24,8 +19,6 @@ class ForecastController extends Controller
 
     public function saveForecast(Request $request)
     {
-
-
         $request->validate([
             "city_id" => "required",
             "curr_temp" => "required|int",
@@ -39,4 +32,6 @@ class ForecastController extends Controller
 
         return redirect("/");
     }
+
+
 }

@@ -24,11 +24,4 @@ class ForecastHelper
         return self::WEATHER_ICONS[$type];
     }
 
-    public static function gerWeatherTypeByTemperature($temperature)
-    {
-        if ($temperature <= 1) return 'snowy';
-        if ($temperature <= 15) return 'cloudy';
-        if ($temperature <= 25) return "text-green-500";
-        return self::WEATHER_ICONS['sunny'];
-    }
 }
