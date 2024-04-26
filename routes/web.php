@@ -25,16 +25,15 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', AdminCheck::class])->prefix('admin')->group(function () {
     Route::get("/city", [CityController::class, 'addCity']);
-    Route::get('/city/{city}', [CityController::class, 'editCity'])->name('city.single');
+    Route::get('/city/edit/{city}', [CityController::class, 'editCity'])->name('city.single');
     Route::get('/forecast', [ForecastController::class, 'addForecast']);
-    Route::get('/city/{city}/delete', [CityController::class, 'delete'])->name('city.delete');
+    Route::get('/city/delete/{city}', [CityController::class, 'delete'])->name('city.delete');
 
     Route::post("/add-forecast", [ForecastController::class, "saveForecast"])->name('forecast.add');
     Route::post('/add-city', [CityController::class, 'saveCity'])->name('city.add');
 });
 //search city forecast
 Route::get('/forecast/search',[ForecastsController::class,'search'])->name('forecast.search');
-
 Route::get('/forecast/{city:name}', [ForecastsController::class, 'citiesForecast'])->name('forecast.cities');
 
 //Domaci 14
