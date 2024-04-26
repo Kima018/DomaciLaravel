@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('domaci_weather', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('city_id');
-            $table->float('curr_temp');
-            $table->timestamps();
-
-            $table->foreign('city_id')->references('id')->on('domaci_cities');
-        });
+//        Schema::create('domaci_weather', function (Blueprint $table) {
+//            $table->id();
+//            $table->unsignedBigInteger('city_id');
+//            $table->float('curr_temp');
+//            $table->timestamps();
+//
+//            $table->foreign('city_id')->references('id')->on('domaci_cities');
+//        });
     }
 
     /**
