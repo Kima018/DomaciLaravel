@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class DomaciCities extends Model
 {
@@ -12,13 +14,13 @@ class DomaciCities extends Model
         'name',
     ];
 
-    public function forecasts()
+    public function forecasts(): HasMany
     {
         return $this->hasMany(DomaciForecasts::class, 'city_id', 'id')
             ->orderBy('date');
     }
 
-    public function todaysForecast()
+    public function todaysForecast(): HasOne
     {
         return $this->hasOne(DomaciForecasts::class, 'city_id', 'id')
             ->whereDate("date", Carbon::now());
