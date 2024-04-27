@@ -27,10 +27,11 @@ class TestCommand extends Command
     public function handle()
     {
 
-        $response = Http::get("http://api.weatherapi.com/v1/forecast.json?", [
+        $response = Http::get(env('WEATHER_API_URL'), [
             'key' => env('API_KEY'),
             'q' => $this->argument('city'),
-            'days'=> 1,
+            'days'=> 3
+            ,
             'aqi' => 'no',
             'alerts'=> 'yes',
             'lang'=>'sr',
@@ -41,6 +42,6 @@ class TestCommand extends Command
         if (isset($jsonResponse['error'])) {
             $this->output->error('Ovaj Grad ne postoji');
         }
-        dd($response->status(), $jsonResponse);
+        dd($jsonResponse);
     }
 }

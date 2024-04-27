@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DomaciCities;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -12,6 +13,9 @@ class ForecastsController extends Controller
     public function search(Request $request)
     {
         $cityName = $request->get('city');
+
+        Artisan::call("app:get-real-weather", ['city' => $cityName]);
+
         $cities = DomaciCities::with('todaysForecast')
             ->where("name", "LIKE", "%$cityName%")->get();
 
@@ -21,7 +25,7 @@ class ForecastsController extends Controller
             $userFavourites = $userFavourites->pluck('city_id')->toArray();
         }
 
-        return view('search_results', compact('cities','userFavourites'));
+        return view('search_results', compact('cities', 'userFavourites'));
     }
 
     public function citiesForecast(DomaciCities $city): View
