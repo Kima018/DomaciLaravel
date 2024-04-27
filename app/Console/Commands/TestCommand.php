@@ -12,7 +12,7 @@ class TestCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'app:test-command';
+    protected $signature = 'app:test-command {city}';
 
     /**
      * The console command description.
@@ -26,9 +26,21 @@ class TestCommand extends Command
      */
     public function handle()
     {
-        $key = env('API_KEY');
-        $response = Http::get("http://api.weatherapi.com/v1/current.json?key=$key&q=London&aqi=no");
+
+        $response = Http::get("http://api.weatherapi.com/v1/forecast.json?", [
+            'key' => env('API_KEY'),
+            'q' => $this->argument('city'),
+            'days'=> 1,
+            'aqi' => 'no',
+            'alerts'=> 'yes',
+            'lang'=>'sr',
+        ]);
+
         $jsonResponse = $response->json();
-        dd($jsonResponse['current']['temp_c']);
+
+        if (isset($jsonResponse['error'])) {
+            $this->output->error('Ovaj Grad ne postoji');
+        }
+        dd($response->status(), $jsonResponse);
     }
 }
